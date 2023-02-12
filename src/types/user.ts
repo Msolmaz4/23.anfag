@@ -5,3 +5,9 @@ export interface User {
     full_name:string,
     token:string
 }
+
+export interface UserState {
+    data:User,
+    loading:boolean,
+    error:string
+}

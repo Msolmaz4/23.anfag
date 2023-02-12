@@ -1,7 +1,8 @@
+import { UserState } from "../../types/user";
 
 
 //state kullanici bilgileri basta hat averir
-const userReducer = (user,action)=>{
+const userReducer = (state:UserState,action)=>{
     return state;
 }
 
