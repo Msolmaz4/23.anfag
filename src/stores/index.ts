@@ -5,8 +5,8 @@ import userReducer from "./reducers/userReducer";
 //2 burada global typde girmek giyel olacak
 interface Appstate {
     user:UserState;
-    categories:any;
-    records:any;
+    //categories:any;
+    //records:any;
 }
 
 
@@ -16,8 +16,8 @@ interface Appstate {
 //burada baslangictaki temel olarak state koyduk
 const rootReducer = combineReducers <Appstate>({
      user:userReducer,
-     categories:()=>{},
-     records:()=>{}
+     //categories:()=>{},
+     //records:()=>{}
 
 
 }) 
