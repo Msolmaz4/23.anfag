@@ -31,7 +31,7 @@ function App() {
               }))}
             />
           </Header>
-          <Content className="site-layout" style={{ padding: '0 50px' }}>
+          <Content className="site-layout" style={{ padding: '150px, 50px' }}>
 
           </Content>
 
