@@ -1,6 +1,13 @@
 
-import { Button, Form, Input, InputNumber } from 'antd';
+import React from 'react'
+import { useNavigate } from "react-router-dom";
+import { Button, Form, Input} from 'antd';
+import api from '../utils/api'
 
+const Signup = () => {
+
+
+  const navigate = useNavigate()
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
@@ -19,11 +26,21 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-const onFinish = (values: any) => {
-  console.log(values);
+const onFinish = async (values: any) => {
+  
+  try {
+    await api.post('/users/register',values)
+ navigate('/login')
+    
+    
+  } catch (error) {
+    console.log('error')
+    
+  }
+
 };
 
-const Signup = () => {
+
   return (
     <Form
       {...layout}
