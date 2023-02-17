@@ -1,44 +1,43 @@
 
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Input} from 'antd';
+import { Button, Form, Input } from 'antd';
 import api from '../utils/api'
 
 const Signup = () => {
-
-
-  const navigate = useNavigate()
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-};
-
-/* eslint-disable no-template-curly-in-string */
-const validateMessages = {
-  required: '${label} is required!',
-  types: {
-    email: '${label} is not a valid email!',
-    number: '${label} is not a valid number!',
-  },
-  number: {
-    range: '${label} must be between ${min} and ${max}',
-  },
-};
-/* eslint-enable no-template-curly-in-string */
-
-const onFinish = async (values: any) => {
   
-  try {
-    await api.post('/users/register',values)
- navigate('/login')
-    
-    
-  } catch (error) {
-    console.log('error')
-    
-  }
+  const navigate = useNavigate()
+  const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  };
 
-};
+  /* eslint-disable no-template-curly-in-string */
+  const validateMessages = {
+    required: '${label} is required!',
+    types: {
+      email: '${label} is not a valid email!',
+      number: '${label} is not a valid number!',
+    },
+    number: {
+      range: '${label} must be between ${min} and ${max}',
+    },
+  };
+  /* eslint-enable no-template-curly-in-string */
+
+  const onFinish = async (values: any) => {
+
+    try {
+      await api.post('/users/register', values)
+      navigate('/login')
+
+
+    } catch (error) {
+      console.log('error')
+
+    }
+
+  };
 
 
   return (

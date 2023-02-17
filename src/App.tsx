@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Signup from './components/Signup';
 import { Layout, Menu } from 'antd';
+import Login from './components/Login';
 
 const { Header, Content, Footer } = Layout;
 
@@ -40,6 +41,7 @@ function App() {
         <Routes>
 
           <Route path='/register' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
 
 
