@@ -5,7 +5,7 @@ import { Button, Form, Input } from 'antd';
 import api from '../utils/api'
 
 const Signup = () => {
-  
+
   const navigate = useNavigate()
   const layout = {
     labelCol: { span: 8 },
@@ -29,7 +29,12 @@ const Signup = () => {
 
     try {
       await api.post('/users/register', values)
-      navigate('/login')
+      //burada yeni kullanici gelice bir ayarlama yaptik loginle birlikte bir deger gonderecegiy
+      navigate('/login',{
+        state:{
+          newSignup:true
+        }
+        })
 
 
     } catch (error) {

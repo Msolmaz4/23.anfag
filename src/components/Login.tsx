@@ -1,16 +1,35 @@
 import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input, Result } from 'antd';
+import showError from '../utils/SchowEr'
+import api from '../utils/api'
+import { useNavigate ,useLocation } from "react-router-dom";
 
-const onFinish = (values: any) => {
-  console.log('Success:', values);
-};
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
 
 
 const Login = () => {
+
+ const navi = useNavigate()
+ const local = useLocation()
+ console.log(local)
+    const onFinish =  async  (values: any) => {
+        console.log('Success:', values);
+        try {
+            await api.post('/users/login',values)
+            navi('/')
+        } catch (error) {
+            console.log(error)
+        }
+        
+      
+      };
+      
+      const onFinishFailed = (errorInfo: any) => {
+        console.log('Failed:', {errorInfo});
+        showError (errorInfo)
+      };
+      
+
+
   return (
     <Form
     name="basic"
@@ -22,6 +41,15 @@ const Login = () => {
     onFinishFailed={onFinishFailed}
     autoComplete="off"
   >
+    {local.state?.newSignup && 
+    (
+      <Result
+        status="success"
+        title="You successfully signed up!"
+        subTitle="Please login using your credentials."
+      />
+    )
+    }
     <Form.Item
       label="Username"
       name="username"
@@ -38,9 +66,7 @@ const Login = () => {
       <Input.Password />
     </Form.Item>
 
-    <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
+  
 
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
       <Button type="primary" htmlType="submit">
