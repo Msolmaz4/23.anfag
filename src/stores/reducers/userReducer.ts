@@ -15,7 +15,24 @@ const defaultState :UserState ={
 //1state kullanici bilgileri basta hat averir
 //action da istek yaparken succe error start bunlaley types icindeki user yaprik 
 const userReducer = (state:UserState=defaultState,action:UserAction)=>{
-    return state;
+  
+   switch(action.type){
+    case 'LOGIN_START':
+        return{...state,loading:true,error:''};
+    case 'LOGIN_SUCCES':
+        return{...state,loading:false,data:action.payload}
+        case 'LOGIN_ERROR':
+        return{...state,loading:false,error:'loading'}
+        default:
+        return state;
+   }
+   
+   
+
+   
+
+
+
 }
 
 
