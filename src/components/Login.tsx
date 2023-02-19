@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form, Input, Result } from 'antd';
 //import showError from '../utils/SchowEr'
 //import api from '../utils/api'
 import { useLocation } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 import { LoginForm } from '../types/user';
 import { login } from '../stores/actions/userAction';
-
+import { useNavigate } from 'react-router-dom';
+import { Appstate } from "../stores";
 
 
 
 const Login = () => {
+  //redux bagladik
+  const dispatch = useDispatch()
+  const onFinish = (values: LoginForm) => {
+   // dispatch(login(values));
+  };
 
+ 
 
-
-
-
-
-  //const navi = useNavigate()
+  const navi = useNavigate()
   const local = useLocation()
   console.log(local)
   //   const onFinish =  async  (values: any) => {
@@ -34,12 +37,13 @@ const Login = () => {
   //       showError (errorInfo)
   //     };
 
-  const dispatch = useDispatch()
-  const onFinish =(values:LoginForm)=>{
-    dispatch(login(values));
-
-  }
-
+  const { data, loading, error } = useSelector((state: Appstate) => state.user);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+    navi('/')
+    }
+  }, [data]);
 
 
   return (

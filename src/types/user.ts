@@ -39,4 +39,4 @@ interface LOGIN_ERROR{
 export type UserAction = LOGIN_START | LOGIN_SUCCES| LOGIN_ERROR
 
 //userdispatch
-export type UserDispatch = ThunkDispatch<UserState,void,UserAction>
+export type UserDispatch = ThunkDispatch<UserState, void, UserAction>

@@ -3,7 +3,7 @@ import { UserState } from "../types/user";
 import userReducer from "./reducers/userReducer";
 
 //2 burada global typde girmek giyel olacak
-interface Appstate {
+export interface Appstate {
     user:UserState;
     //categories:any;
     //records:any;
