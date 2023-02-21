@@ -43,7 +43,7 @@ const Login = () => {
     if (token) {
     navi('/')
     }
-  }, [data]);
+  }, [ data ]);
 
 
   return (
